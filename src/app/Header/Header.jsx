@@ -69,7 +69,7 @@ const Header = () => {
       </button>
     </form>
            </div>
-           <div className='ml-2 flex justify-between items-center '>
+           <div className='ml-2 flex justify-between justify-between items-center '>
             <div className='mr-5'>
             
             <FontAwesomeIcon icon={faHome} style={{fontSize:20}} />

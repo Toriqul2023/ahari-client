@@ -18,8 +18,8 @@ const Popular = ({PopularData}) => {
     const [datas,setDatas]=useState(PopularData)
   return (
     <div>
-        <div className='flex w-[60%] p-5 mx-[auto] items-center'>
-            <div className='w-[30%] mr-2'>
+        <div className='flex w-[60%] py-5 mx-[auto] items-center'>
+            <div className='w-[30%] mr-2 place-self-start'>
                 <Image style={{height:'287px',width:'287px'}} src={'https://aharibd.com/wp-content/uploads/2023/12/6.jpg'} width={500} height={500}/>
             </div>
             <div className='w-[70%]'>
