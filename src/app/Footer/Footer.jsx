@@ -4,7 +4,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='bg-[#044029] py-5'>
+    <div className='bg-[#044029] mt-[50px] py-5'>
         <div className='w-[60%] mx-[auto] text-white'>
              <div className="footer_logo">
                 <Image style={{height:'86px',width:'143px'}}  className='d-block mx-auto' src={'https://aharibd.com/wp-content/uploads/2021/09/Asset-6-1.png'} width={500} height={500}/>

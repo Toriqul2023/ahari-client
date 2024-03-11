@@ -2,12 +2,14 @@
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
+import { MyContext } from '../context'
 
 
 const Header = () => {
   const [active,setActive]=useState(false)
+  const {user,loading}=useContext(MyContext)
     const {
         register,
         handleSubmit,
@@ -36,7 +38,7 @@ const Header = () => {
   return (
    
 
-    <div className={!active ? `fixed w-[100%] bg-white top-0 left-0 z-[999]  `:'fixed w-[100%] bg-black top-0 left-0 z-[999] text-white'}>
+    <div className={!active ? `sticky w-[100%] bg-white top-0 left-0 z-[999]  `:'sticky w-[100%] bg-black top-0 left-0 z-[999] text-white'}>
     
      <div className='w-[60%] mx-[auto] flex items-center'>
            <div className='mr-2'>
@@ -45,7 +47,7 @@ const Header = () => {
            </div>
            <div>
                     <div className="dropdown dropdown-hover">
-            <div tabIndex={0} role="button" className="btn text-white bg-[#04472D] m-1 w-52 hover:bg-[#04472D]" style={{outline:'none'}}>Hover</div>
+            <div tabIndex={0} role="button" className="btn text-white bg-[#04472D] m-1 w-52 hover:bg-[#04472D]" style={{outline:'none'}}>Browse Categories</div>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li className='text-black'><a>Item 1</a></li>
                 <li className='text-black'><a>Item 2</a></li>
@@ -69,13 +71,15 @@ const Header = () => {
       </button>
     </form>
            </div>
-           <div className='ml-2 flex justify-between justify-between items-center '>
-            <div className='mr-5'>
+           <div className='ml-5 flex grow  justify-between items-center '>
+            <div className=''>
             
-            <FontAwesomeIcon icon={faHome} style={{fontSize:20}} />
+           
             </div>
-            <div>
+            <div className='justufy-end'>
+            <FontAwesomeIcon className=' mr-3' icon={faHome} style={{fontSize:20}} />
             <FontAwesomeIcon icon={faUser} style={{fontSize:20}}  className='mr-2' />      Login / Registar
+            
             </div>
          
 

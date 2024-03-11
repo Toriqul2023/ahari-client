@@ -4,7 +4,7 @@ import Slider from "./Slider/Slider";
 import Popular from "./Popular/Popular";
 import All from "./All/All";
 import Founder from "./Founder/Founder";
-import Footer from "./Footer/Footer";
+
 
 export default function Home() {
   const popularArray=[
@@ -42,12 +42,12 @@ export default function Home() {
   return (
     <>
        
-    <Header/>
+    
     <Slider/>
     <Popular PopularData={popularArray}/>
     <All popularDatas={popularArray}/>
     <Founder/>
-    <Footer/>
+    
     </>
   );
 }

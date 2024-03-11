@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import  { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,13 +13,15 @@ import './styles.css';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
+import { MyContext } from '../context';
 
 const Popular = ({PopularData}) => {
-    const [datas,setDatas]=useState(PopularData)
+    const {datas,setDatas,addCart,user}=useContext(MyContext)
+  
   return (
     <div>
         <div className='flex w-[60%] py-5 mx-[auto] items-center'>
-            <div className='w-[30%] mr-2 place-self-start'>
+            <div className='w-[30%] mr-2 justify-self-start'>
                 <Image style={{height:'287px',width:'287px'}} src={'https://aharibd.com/wp-content/uploads/2023/12/6.jpg'} width={500} height={500}/>
             </div>
             <div className='w-[70%]'>
@@ -47,7 +49,7 @@ const Popular = ({PopularData}) => {
         className="mySwiper"
       >
         {
-            datas?.map(data=>(
+            datas?.slice(0,5).map(data=>(
               
                   <SwiperSlide className='text-black shadow-lg'>
                     <div className='text-start'>
@@ -59,7 +61,7 @@ const Popular = ({PopularData}) => {
                   
                    <h3 className='text-black p-2'>{data?.name}</h3>
                    <p className='text-black p-2'>{data?.price}৳</p> 
-                   <button className='btn   mb-[50px]  w-[100%] text-white bg-[#04472D] hover:bg-[#04472D]' style={{outline:'none'}}>Add To cart</button>
+                   <button onClick={()=>addCart(data,user?.email)} className='btn   mb-[50px]  w-[100%] text-white bg-[#04472D] hover:bg-[#04472D]' style={{outline:'none'}}>Add To cart</button>
                     </div>
                  
                  

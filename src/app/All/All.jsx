@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import  { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,9 +13,16 @@ import './styles.css';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
+import { MyContext } from '../context';
 
 const All = ({popularDatas}) => {
-    const [datas,setDatas]=useState(popularDatas)
+   
+    const {datas,setDatas,addCart,user}=useContext(MyContext)
+//     useEffect(()=>{
+//       fetch('http://localhost:4000/shop')
+//       .then(res=>res.json())
+//       .then(data=>setDatas(data))
+// },[])
   return (
     <div>
         <div className='mx-[auto] w-[60%]'>
@@ -45,7 +52,7 @@ const All = ({popularDatas}) => {
         className="mySwiper"
       >
         {
-            datas?.map(data=>(
+            datas?.slice(0,10).map(data=>(
               
                   <SwiperSlide className='text-black shadow-lg'>
                     <div className='text-start'>
@@ -57,7 +64,7 @@ const All = ({popularDatas}) => {
                   
                    <h3 className='text-black p-2'>{data?.name}</h3>
                    <p className='text-black p-2'>{data?.price}৳</p> 
-                   <button className='btn   mb-[50px]  w-[100%] text-white bg-[#04472D] hover:bg-[#04472D]' style={{outline:'none'}}>Add To cart</button>
+                   <button onClick={()=>addCart(data,user?.email)} className='btn   mb-[50px]  w-[100%] text-white bg-[#04472D] hover:bg-[#04472D]' style={{outline:'none'}}>Add To cart</button>
                     </div>
                  
                  
@@ -97,7 +104,7 @@ const All = ({popularDatas}) => {
         className="mySwiper"
       >
         {
-            datas?.map(data=>(
+            datas?.slice(3,15).map(data=>(
               
                   <SwiperSlide className='text-black shadow-lg'>
                     <div className='text-start'>
@@ -109,7 +116,7 @@ const All = ({popularDatas}) => {
                   
                    <h3 className='text-black p-2'>{data?.name}</h3>
                    <p className='text-black p-2'>{data?.price}৳</p> 
-                   <button className='btn   mb-[50px]  w-[100%] text-white bg-[#04472D] hover:bg-[#04472D]' style={{outline:'none'}}>Add To cart</button>
+                   <button onClick={()=>addCart(data,user?.email)} className='btn   mb-[50px]  w-[100%] text-white bg-[#04472D] hover:bg-[#04472D]' style={{outline:'none'}}>Add To cart</button>
                     </div>
                  
                  
